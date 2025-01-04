@@ -72,3 +72,7 @@
 .hover\:scale-105:hover {
   transform: scale(1.05);
 }
+
+.card-hover {
+  @apply transition-all duration-300 hover:shadow-lg hover:shadow-primary/20;
+}
