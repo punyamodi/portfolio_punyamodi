@@ -76,3 +76,31 @@
 .card-hover {
   @apply transition-all duration-300 hover:shadow-lg hover:shadow-primary/20;
 }
+
+/* Glass effect */
+.glass {
+  @apply bg-white/10 backdrop-blur-lg border border-white/20;
+}
+
+/* Skill card hover effect */
+.skill-card {
+  @apply transition-all duration-300;
+}
+
+.skill-card:hover {
+  @apply transform -translate-y-1 shadow-xl;
+}
+
+/* Dot animation */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-dot {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
