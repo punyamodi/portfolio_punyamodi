@@ -35,9 +35,11 @@ const experiences: Experience[] = [
 ];
 
 const ExperienceCard = ({ experience }: { experience: Experience }) => (
-  <Card className="card-gradient animate-slide-up hover:shadow-lg transition-shadow duration-300">
+  <Card className="group hover:scale-102 transition-all duration-300 bg-gradient-to-br from-card to-transparent border-primary/20">
     <CardHeader className="flex flex-row items-center gap-4">
-      <Briefcase className="h-8 w-8 text-primary" />
+      <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
+        <Briefcase className="h-8 w-8 text-primary" />
+      </div>
       <div className="flex-1">
         <h3 className="text-xl font-semibold gradient-text">{experience.title}</h3>
         <p className="text-muted-foreground">{experience.company}</p>
@@ -45,10 +47,14 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => (
       </div>
     </CardHeader>
     <CardContent>
-      <p className="text-muted-foreground mb-4">{experience.description}</p>
+      <p className="text-muted-foreground mb-6 leading-relaxed">{experience.description}</p>
       <div className="flex flex-wrap gap-2">
         {experience.skills.map((skill) => (
-          <Badge key={skill} variant="secondary" className="hover:bg-primary/20 transition-colors">
+          <Badge 
+            key={skill} 
+            variant="secondary" 
+            className="hover:bg-primary/20 transition-colors duration-300"
+          >
             {skill}
           </Badge>
         ))}
@@ -59,12 +65,16 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => (
 
 const Experience = () => {
   return (
-    <section className="py-20 px-4">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 gradient-text">Experience</h2>
-      <div className="grid grid-cols-1 gap-6 max-w-4xl mx-auto">
-        {experiences.map((experience) => (
-          <ExperienceCard key={experience.title} experience={experience} />
-        ))}
+    <section className="py-20 px-4 bg-gradient-to-b from-background to-card/50">
+      <div className="max-w-4xl mx-auto">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text">
+          Experience
+        </h2>
+        <div className="space-y-8">
+          {experiences.map((experience) => (
+            <ExperienceCard key={experience.title} experience={experience} />
+          ))}
+        </div>
       </div>
     </section>
   );

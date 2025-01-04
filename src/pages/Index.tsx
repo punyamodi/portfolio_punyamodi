@@ -6,7 +6,7 @@ import Experience from "@/components/Experience";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gradient-to-b from-background via-background to-card/30">
       <Hero />
       <Skills />
       <Experience />

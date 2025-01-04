@@ -31,13 +31,15 @@ const positions: Position[] = [
 ];
 
 const PositionCard = ({ position }: { position: Position }) => (
-  <Card className="card-gradient animate-slide-up hover:shadow-lg transition-shadow duration-300">
+  <Card className="group hover:scale-102 transition-all duration-300 bg-gradient-to-br from-card to-transparent border-primary/20">
     <CardHeader className="flex flex-row items-center gap-4">
-      {position.icon === "ml" ? (
-        <Brain className="h-8 w-8 text-primary" />
-      ) : (
-        <GraduationCap className="h-8 w-8 text-primary" />
-      )}
+      <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
+        {position.icon === "ml" ? (
+          <Brain className="h-8 w-8 text-primary" />
+        ) : (
+          <GraduationCap className="h-8 w-8 text-primary" />
+        )}
+      </div>
       <div className="flex-1">
         <h3 className="text-xl font-semibold gradient-text">{position.title}</h3>
         <p className="text-muted-foreground">{position.organization}</p>
@@ -45,10 +47,14 @@ const PositionCard = ({ position }: { position: Position }) => (
       </div>
     </CardHeader>
     <CardContent>
-      <p className="text-muted-foreground mb-4">{position.description}</p>
+      <p className="text-muted-foreground mb-6 leading-relaxed">{position.description}</p>
       <div className="flex flex-wrap gap-2">
         {position.skills.map((skill) => (
-          <Badge key={skill} variant="secondary" className="hover:bg-primary/20 transition-colors">
+          <Badge 
+            key={skill} 
+            variant="secondary" 
+            className="hover:bg-primary/20 transition-colors duration-300"
+          >
             {skill}
           </Badge>
         ))}
@@ -60,13 +66,15 @@ const PositionCard = ({ position }: { position: Position }) => (
 const Positions = () => {
   return (
     <section className="py-20 px-4">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 gradient-text">
-        Positions of Responsibility
-      </h2>
-      <div className="grid grid-cols-1 gap-6 max-w-4xl mx-auto">
-        {positions.map((position) => (
-          <PositionCard key={position.title} position={position} />
-        ))}
+      <div className="max-w-4xl mx-auto">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text">
+          Positions of Responsibility
+        </h2>
+        <div className="space-y-8">
+          {positions.map((position) => (
+            <PositionCard key={position.title} position={position} />
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -44,10 +44,12 @@ const skillCategories: SkillCategory[] = [
 const SkillCard = ({ category }: { category: SkillCategory }) => {
   const Icon = category.icon;
   return (
-    <Card className="card-gradient animate-slide-up hover:shadow-lg transition-shadow duration-300">
+    <Card className="group hover:scale-105 transition-all duration-300 bg-gradient-to-br from-card to-transparent border-primary/20">
       <CardContent className="p-6">
-        <div className="flex items-center gap-4 mb-4">
-          <Icon className="h-8 w-8 text-primary" />
+        <div className="flex items-center gap-4 mb-6">
+          <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
+            <Icon className="h-8 w-8 text-primary" />
+          </div>
           <h3 className="text-xl font-semibold gradient-text">{category.title}</h3>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -55,7 +57,7 @@ const SkillCard = ({ category }: { category: SkillCategory }) => {
             <Badge 
               key={skill} 
               variant="secondary"
-              className="hover:bg-primary/20 transition-colors"
+              className="hover:bg-primary/20 transition-colors duration-300"
             >
               {skill}
             </Badge>
@@ -68,12 +70,16 @@ const SkillCard = ({ category }: { category: SkillCategory }) => {
 
 const Skills = () => {
   return (
-    <section className="py-20 px-4">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 gradient-text">Skills</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-        {skillCategories.map((category) => (
-          <SkillCard key={category.title} category={category} />
-        ))}
+    <section id="skills" className="py-20 px-4">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text">
+          Skills & Expertise
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {skillCategories.map((category) => (
+            <SkillCard key={category.title} category={category} />
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -36,16 +36,9 @@
   .gradient-text {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[#9B87F5] to-[#61DAFB];
   }
-  .card-gradient {
-    @apply bg-gradient-to-b from-card to-transparent;
-  }
 }
 
-.animate-slide-up {
-  animation: slideUp 0.5s ease-out;
-}
-
-@keyframes slideUp {
+@keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -54,4 +47,28 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.hover\:scale-102:hover {
+  transform: scale(1.02);
+}
+
+.hover\:scale-105:hover {
+  transform: scale(1.05);
 }
